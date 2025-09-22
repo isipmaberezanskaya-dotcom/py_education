@@ -3,7 +3,6 @@ num_list = []
 op_list = []
 
 num = ''
-pre_res = 0
 res = 0
 
 
@@ -31,3 +30,4 @@ if num != '':
 res = eval(f'{num_list[0]} {op_list[0]} {num_list[1]}')
 
 print(f"Результат: {res}")
+
