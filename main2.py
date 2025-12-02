@@ -1,33 +1,41 @@
-user_input = input("Введите выражение:")
-num_list = []
-op_list = []
+a = float(input("Введите первое число: "))
+b = float(input("Введите второе число: "))
+sign = input("Введите знак операции (+, -, *, /, //, %, **): ")
 
-num = ''
-res = 0
+valid_ops = ['+', '-', '*', '/', '//', '%', '**']
 
+if sign not in valid_ops:
+    print("Ошибка: неизвестная операция!")
+else:
+    result = None
 
-for i in user_input:
-    if i.isdigit() or i == '.' or i == ",":
-        num = num + i
-    elif i == ' ':
-        continue
-    elif i.isalpha():
-        print("Введено неккоректное математическое выражение!")
-        break
-    else:
-        if num != '':
-            num_list.append(float(num))
-            num = ''
-        op = i
-        if op in op_list:
-            op_list[0] += op
+    if sign == '+':
+        result = a + b
+    elif sign == '-':
+        result = a - b
+    elif sign == '*':
+        result = a * b
+    elif sign == '/':
+        if b != 0:
+            result = a / b
         else:
-            op_list.append(op)
+            result = "Ошибка: деление на ноль!"
+    elif sign == '//':
+        if b != 0:
+            result = a // b
+        else:
+            result = "Ошибка: деление на ноль!"
+    elif sign == '%':
+        if b != 0:
+            result = a % b
+        else:
+            result = "Ошибка: деление на ноль!"
+    elif sign == '**':
+        result = a ** b
 
-if num != '':
-    num_list.append(float(num))
-       
-res = eval(f'{num_list[0]} {op_list[0]} {num_list[1]}')
+    if result is not None:
+        print("Результат:", result)
+    else:
+        print("Неизвесная ошибка: результат не вычислен")
 
-print(f"Результат: {res}")
 
